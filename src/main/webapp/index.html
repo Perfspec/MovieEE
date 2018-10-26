@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      function httpGet()
+      {
+          var theURL = "http://localhost:8080/Movies/api/movie/getAllMovies";
+      	var xmlHttp = new XMLHttpRequest();
+      	xmlHttp.open("GET", theURL, false);
+      	xmlHttp.send(null);
+      	document.getElementById("Output").innerHTML = xmlHttp.response;
+      }
+
+      function httpDelete()
+      {
+      	var inputtedID = document.getElementById("txtInputID").value;
+      	var theURL = "http://localhost:8080/accountapp/api/account/deleteAccount/" + inputtedID;
+      	var xmlHttp = new XMLHttpRequest();
+      	xmlHttp.open("DELETE", theURL, false);
+      	xmlHttp.send(null);
+      	document.getElementById("Output").innerHTML = xmlHttp.response;
+      }
+
+      function httpCreate()
+      {
+          var theURL = "http://localhost:8080/accountapp/api/account/createAccount";
+      	var xmlHttp = new XMLHttpRequest();
+      	xmlHttp.open("POST", theURL, false);
+      	xmlHttp.send("{firstName:" + document.getElementById("name1").value + ", secondName:" + document.getElementById("name2").value + ", accountNumber:" + document.getElementById("number").value + "}");
+      	document.getElementById("Output").innerHTML = xmlHttp.response;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Malcolm Lindsay</h1>
+
+    <button type="button"
+    onclick="httpGet()">
+    Send an HTTP GET request
+    </button>
+
+    <br><br>
+
+    <input id="txtInputID" type="text">
+    <button type="button"
+    onclick="httpDelete()">
+    Send an HTTP DELETE request
+    </button>
+
+    <br><br>
+
+    <input id="name1" type="text">
+    <input id="name2" type="text">
+    <input id="number" type="text">
+    <button type="button"
+    onclick="httpCreate()">
+    Send an HTTP POST request
+    </button>
+
+    <p id="Output"></p>
+
+  </body>
+</html>
