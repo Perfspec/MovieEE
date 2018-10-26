@@ -55,6 +55,25 @@ public class MovieDBRepository implements MovieRepository{
 		return "{\"message\": \"movie sucessfully deleted\"}";
 	}
 
+	@Override
+	@Transactional(REQUIRED)
+	public String updateMovie(Long id, String movie) {
+		Movie movieInDB = findMovie(id);
+		Movie newMovie = util.getObjectForJSON(movie, Movie.class);
+		if (movieInDB != null) {
+			movieInDB.setTitle(newMovie.getTitle());
+			movieInDB.setGenre(newMovie.getGenre());
+			movieInDB.setRating(newMovie.getRating());
+			manager.refresh(movieInDB);
+			return "{\"message\": \"movie sucessfully updated\"}";
+		} else {
+			manager.refresh(newMovie);
+			return "{\"message\": \"movie not present. \"}";
+		}
+		
+	}
+	
+	
 	private Movie findMovie(Long id) {
 		return manager.find(Movie.class, id);
 	}
@@ -66,6 +85,7 @@ public class MovieDBRepository implements MovieRepository{
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
+
 
 
 }

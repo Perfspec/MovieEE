@@ -8,5 +8,7 @@ public interface MovieService {
 
 	String deleteMovie(Long id);
 
+	String updateMovie(Long id, String movie);
+
 
 }
