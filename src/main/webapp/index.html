@@ -5,7 +5,7 @@
     <script>
       function httpGet()
       {
-          var theURL = "http://localhost:8080/Movies/api/movie/getAllMovies";
+          var theURL = "http://localhost:8080/Movie/api/movie/getAllMovies";
       	var xmlHttp = new XMLHttpRequest();
       	xmlHttp.open("GET", theURL, false);
       	xmlHttp.send(null);
@@ -15,7 +15,7 @@
       function httpDelete()
       {
       	var inputtedID = document.getElementById("txtInputID").value;
-      	var theURL = "http://localhost:8080/accountapp/api/account/deleteAccount/" + inputtedID;
+      	var theURL = "http://localhost:8080/Movie/api/movie/deleteMovie/" + inputtedID;
       	var xmlHttp = new XMLHttpRequest();
       	xmlHttp.open("DELETE", theURL, false);
       	xmlHttp.send(null);
@@ -24,7 +24,7 @@
 
       function httpCreate()
       {
-          var theURL = "http://localhost:8080/accountapp/api/account/createAccount";
+          var theURL = "http://localhost:8080/Movie/api/movie/addMovie";
       	var xmlHttp = new XMLHttpRequest();
       	xmlHttp.open("POST", theURL, false);
       	xmlHttp.send("{firstName:" + document.getElementById("name1").value + ", secondName:" + document.getElementById("name2").value + ", accountNumber:" + document.getElementById("number").value + "}");
