@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
-  <properties>
+  	<properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.jboss.bom>10.1.0.Final</version.jboss.bom>
         <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
@@ -13,7 +13,16 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
-
+	
+	<profiles>
+		<profile>
+			<id>deploy</id>
+			<build>
+				<directory>C:\Users\Admin\ExternalApps\wildfly-10.1.0.Final\standalone\deployments</directory>
+			</build>
+		</profile>
+	</profiles>
+	
     <dependencyManagement>
       <dependencies>
           <dependency>
