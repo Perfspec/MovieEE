@@ -27,9 +27,19 @@
           var theURL = "http://localhost:8080/Movie/api/movie/addMovie";
       	var xmlHttp = new XMLHttpRequest();
       	xmlHttp.open("POST", theURL, false);
+      	xmlHttp.send("{title:" + document.getElementById("titleC").value + ", genreC:" + document.getElementById("name2").value + ", rating:" + document.getElementById("number").value + "}");
+      	document.getElementById("Output").innerHTML = xmlHttp.response;
+      }
+
+      function httpUpdate()
+      {
+          var theURL = "http://localhost:8080/Movie/api/movie/updateMovie";
+      	var xmlHttp = new XMLHttpRequest();
+      	xmlHttp.open("PUT", theURL, false);
       	xmlHttp.send("{firstName:" + document.getElementById("name1").value + ", secondName:" + document.getElementById("name2").value + ", accountNumber:" + document.getElementById("number").value + "}");
       	document.getElementById("Output").innerHTML = xmlHttp.response;
       }
+
     </script>
   </head>
 
@@ -51,13 +61,18 @@
 
     <br><br>
 
-    <input id="name1" type="text">
-    <input id="name2" type="text">
-    <input id="number" type="text">
+    <input id="titleC" type="text">
+    <input id="genreC" type="text">
+    <input id="ratingC" type="text">
     <button type="button"
     onclick="httpCreate()">
     Send an HTTP POST request
     </button>
+
+
+    <input id="titleU" type="text">
+    <input id="genreU" type="text">
+    <input id="ratingU" type="text">
 
     <p id="Output"></p>
 
