@@ -3,9 +3,19 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-      function httpGet()
+      function httpGetAll()
       {
           var theURL = "http://localhost:8080/Movie/api/movie/getAllMovies";
+      	var xmlHttp = new XMLHttpRequest();
+      	xmlHttp.open("GET", theURL, false);
+      	xmlHttp.send(null);
+      	document.getElementById("Output").innerHTML = xmlHttp.response;
+      }
+
+      function httpGet()
+      {
+      	var inputtedID = document.getElementById("txtInputID2").value;
+      	var theURL = "http://localhost:8080/Movie/api/movie/getMovie/" + inputtedID;
       	var xmlHttp = new XMLHttpRequest();
       	xmlHttp.open("GET", theURL, false);
       	xmlHttp.send(null);
@@ -47,8 +57,16 @@
     <h1>Malcolm Lindsay</h1>
 
     <button type="button"
+    onclick="httpGetAll()">
+    Get all the movies
+    </button>
+
+    <br><br>
+
+    <input id="txtInputID2" type="text">
+    <button type="button"
     onclick="httpGet()">
-    Send an HTTP GET request
+    Get Movie with id =
     </button>
 
     <br><br>
@@ -56,7 +74,7 @@
     <input id="txtInputID" type="text">
     <button type="button"
     onclick="httpDelete()">
-    Send an HTTP DELETE request
+    Delete Movie with id =
     </button>
 
     <br><br>
@@ -66,13 +84,17 @@
     <input id="ratingC" type="text">
     <button type="button"
     onclick="httpCreate()">
-    Send an HTTP POST request
+    Create(title, genre, rating)
     </button>
 
 
     <input id="titleU" type="text">
     <input id="genreU" type="text">
     <input id="ratingU" type="text">
+    <button type="button"
+    onclick="httpUpdate()">
+    Update(title, genre, rating)
+    </button>
 
     <p id="Output"></p>
 
