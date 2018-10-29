@@ -31,4 +31,9 @@ public class MovieServiceImpl implements MovieService{
 	public String updateMovie(Long id, String movie) {
 		return repo.updateMovie(id, movie);
 	}
+
+	@Override
+	public String getMovie(Long id) {
+		return repo.getMovie(id);
+	}
 }

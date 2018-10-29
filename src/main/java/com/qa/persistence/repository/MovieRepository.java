@@ -10,4 +10,6 @@ public interface MovieRepository {
 
 	String updateMovie(Long id, String movie);
 
+	String getMovie(Long id);
+
 }

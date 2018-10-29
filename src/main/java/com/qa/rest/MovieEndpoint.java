@@ -24,6 +24,13 @@ public class MovieEndpoint {
 	public String getAllMovies() {
 		return service.getAllMovies();
 	}
+	
+	@Path("/getMovie/{id}")
+	@POST
+	@Produces({ "application/json" })
+	public String getMovie(@PathParam("id") Long id) {
+		return service.getMovie(id);
+	}
 
 	@Path("/addMovie")
 	@POST

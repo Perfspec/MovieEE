@@ -10,5 +10,7 @@ public interface MovieService {
 
 	String updateMovie(Long id, String movie);
 
+	String getMovie(Long id);
+
 
 }

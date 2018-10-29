@@ -38,6 +38,13 @@ public class MovieDBRepository implements MovieRepository{
 	}
 	
 	@Override
+	public String getMovie(Long id) {
+		Movie movieInDB = findMovie(id);
+		// Converting Object to JSON
+		return util.getJSONForObject(movieInDB);
+	}
+	
+	@Override
 	@Transactional(REQUIRED)
 	public String addMovie(String movie) {
 		Movie aMovie = util.getObjectForJSON(movie, Movie.class);
@@ -85,7 +92,6 @@ public class MovieDBRepository implements MovieRepository{
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
-
 
 
 }
